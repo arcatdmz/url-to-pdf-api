@@ -10,6 +10,7 @@ const config = {
   CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
   API_TOKENS: [],
   PUBLIC_DIR: process.env.PUBLIC_DIR,
+  FILES: process.env.FILES,
 };
 
 if (process.env.API_TOKENS) {

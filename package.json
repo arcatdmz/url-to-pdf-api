@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "env-cmd nodemon --watch ./src -e js src/index.js",
+    "save": "env-cmd node util/save.js",
     "test": "mocha --timeout 10000 && npm run lint",
     "lint": "eslint ."
   },
@@ -42,6 +43,7 @@
     "eslint": "^4.8.0",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.7.0",
+    "glob": "^7.1.4",
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
     "supertest": "^3.0.0"
