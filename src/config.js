@@ -11,6 +11,7 @@ const config = {
   API_TOKENS: [],
   PUBLIC_DIR: process.env.PUBLIC_DIR,
   FILES: process.env.FILES,
+  OUT_DIR: process.env.OUT_DIR,
 };
 
 if (process.env.API_TOKENS) {
