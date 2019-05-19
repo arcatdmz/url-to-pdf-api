@@ -35,6 +35,7 @@ content to a PDF. This API does just that.
 
 **🚀 Shortcuts:**
 
+* [Utilities](#utilities)
 * [Examples](#examples)
 * [API](#api)
 * [I want to run this myself](#development)
@@ -56,6 +57,22 @@ and requests are direct connections to it.
 
 * Docker wrapper for this can be found here: https://github.com/microbox/node-url-to-pdf-api
 
+## Utilities
+
+You can find useful Node.js programs under `util` directory.
+
+### save.js
+
+By specifying `PUBLIC_DIR`, `FILES`, `OUT_DIR`, and optionally `FLATTEN_OUT_PATHS` in `.env`, you can print all `FILES` as PDF files and store them in `OUT_DIR`.
+
+After running `npm install` and setting the above environment variables, simply run the following commands.
+
+```sh
+# launch the API server
+npm run start
+# list up files and print all the PDF files
+npm run save
+```
 
 ## Examples
 
