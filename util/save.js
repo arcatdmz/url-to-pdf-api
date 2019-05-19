@@ -10,16 +10,35 @@ const outDir = path.resolve(process.cwd(), config.OUT_DIR);
 const files = glob.sync(config.FILES, {
   cwd,
 });
+const flatten = config.FLATTEN_OUT_PATHS;
+const flattenPath = p => p.replace(/[/\\]/g, '_');
 
-files.forEach((file) => {
+const tasks = files.map(file => () => new Promise((resolve) => {
   // get full path:
   // const filePath = path.join(cwd, file);
 
   // copy file:
+  // const url = `http://localhost:${config.PORT}/public/${file}`;
+  // const outPath = path.join(outDir, file);
+  // const outSubdir = path.dirname(outPath);
+  // mkdirp.sync(outSubdir);
+  // request(url).pipe(fs.createWriteStream(outPath));
+
+  // create PDF file:
   const url = `http://localhost:${config.PORT}/public/${file}`;
-  const outPath = path.join(outDir, file);
+  const pdfUrl = `http://localhost:${config.PORT}/api/render?url=${encodeURIComponent(url)}`;
+  const outPath = `${path.join(outDir, flatten ? flattenPath(file) : file)}.pdf`;
   const outSubdir = path.dirname(outPath);
   mkdirp.sync(outSubdir);
-  request(url).pipe(fs.createWriteStream(outPath));
+  const pipe = request(pdfUrl).pipe(fs.createWriteStream(outPath));
+  pipe.on('finish', () => resolve(file));
+}));
+
+tasks.reduce((promiseChain, currentTask) => promiseChain.then(chainResults =>
+  currentTask().then(currentResult =>
+    [...chainResults, currentResult]
+  )
+), Promise.resolve([])).then((arrayOfResults) => {
+  console.log('printed', arrayOfResults);
 });
 

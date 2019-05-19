@@ -12,6 +12,7 @@ const config = {
   PUBLIC_DIR: process.env.PUBLIC_DIR,
   FILES: process.env.FILES,
   OUT_DIR: process.env.OUT_DIR,
+  FLATTEN_OUT_PATHS: process.env.FLATTEN_OUT_PATHS === 'true',
 };
 
 if (process.env.API_TOKENS) {
