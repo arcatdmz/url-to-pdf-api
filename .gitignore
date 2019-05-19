@@ -1,6 +1,7 @@
 .env
 .DS_Store
 .idea
+public
 
 # Logs
 logs

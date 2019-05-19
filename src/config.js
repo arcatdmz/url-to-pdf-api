@@ -9,6 +9,7 @@ const config = {
   DEBUG_MODE: process.env.DEBUG_MODE === 'true',
   CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
   API_TOKENS: [],
+  PUBLIC_DIR: process.env.PUBLIC_DIR,
 };
 
 if (process.env.API_TOKENS) {

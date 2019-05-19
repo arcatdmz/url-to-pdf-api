@@ -48,6 +48,9 @@ function createApp() {
   const router = createRouter();
   app.use('/', router);
 
+  // Show public dir content
+  app.use('/public', express.static(config.PUBLIC_DIR));
+  
   app.use(errorLogger());
   app.use(errorResponder());
 
