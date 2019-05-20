@@ -13,6 +13,7 @@ const config = {
   FILES: process.env.FILES,
   OUT_DIR: process.env.OUT_DIR,
   FLATTEN_OUT_PATHS: process.env.FLATTEN_OUT_PATHS === 'true',
+  EXTRA_PARAMS: process.env.EXTRA_PARAMS,
 };
 
 if (process.env.API_TOKENS) {

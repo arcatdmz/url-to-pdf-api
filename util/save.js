@@ -26,7 +26,8 @@ const tasks = files.map(file => () => new Promise((resolve) => {
 
   // create PDF file:
   const url = `http://localhost:${config.PORT}/public/${file}`;
-  const pdfUrl = `http://localhost:${config.PORT}/api/render?url=${encodeURIComponent(url)}`;
+  const extraParams = config.EXTRA_PARAMS ? `&${config.EXTRA_PARAMS}` : '';
+  const pdfUrl = `http://localhost:${config.PORT}/api/render?url=${encodeURIComponent(url)}${extraParams}`;
   const outPath = `${path.join(outDir, flatten ? flattenPath(file) : file)}.pdf`;
   const outSubdir = path.dirname(outPath);
   mkdirp.sync(outSubdir);
